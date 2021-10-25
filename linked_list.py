@@ -67,7 +67,8 @@ class linked_list:
     def insert(self,val,pos):
         """
         Inserts a new node at any point on the list
-        It takes constant time O(1) to insert the item but the traversal through the the list to find the location of the insertion takes linear time O(n)
+        It takes constant time O(1) to insert the item but the traversal through the list to find the location of the insertion takes linear time O(n)
+        It also takes O(n) time to calculate the size of the list  and so the total time complexity is a multiple of O(n) time which can be still expressed as O(n)
         
         """
         size_of_list = self.size()
