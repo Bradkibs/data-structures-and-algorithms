@@ -50,6 +50,40 @@ class linked_list:
         item.next_node = self.head
         self.head = item 
 
+    def search(self,key):
+        """
+        It searches for the first node containing a data that matches the key and returns it and returns item: {key} not found!
+
+        It takes O(n) time
+        """
+        curr= self.head
+        while curr:
+            if curr.data==key:
+                return curr
+            else:
+                curr = curr.next_node
+            return f"item: {key} not found!"
+
+    def insert(self,val,pos):
+        """
+        Inserts a new node at any point on the list
+        It takes constant time O(1) to insert the item but the traversal through the the list to find the location of the insertion takes linear time O(n)
+        
+        """
+        new = node(val)
+        value= new 
+        position = pos
+        if position == 0:
+            self.add(val)   
+        elif position > 0:
+           
+            while position > 1:
+                value = value.next_node
+                position -= 1
+            prev = value
+            next= value.next_node
+
+
     def __repr__(self) -> list:
         """
         represents the node from the head to the tail in a list(built in python list)
@@ -61,12 +95,13 @@ class linked_list:
         
         while curr:
             if curr is self.head:
-                output.append(f"Head: {curr.data}")
-            elif curr.next_node:
-                output.append(f"{curr.next_node}")
+                output.append(f"[Head: {curr.data}]")
+            elif curr.next_node is None:
+                output.append(f"[Tail: {curr.data}]")
+               
             else:
-                output.append(f"Tail: {curr.data}")
+                output.append(f"{curr.data}")
             curr = curr.next_node
-        joined_list= "--> ".join(output)
+        joined_list= " --> ".join(output)
         return joined_list
                 
