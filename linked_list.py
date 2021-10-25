@@ -52,7 +52,7 @@ class linked_list:
 
     def search(self,key):
         """
-        It searches for the first node containing a data that matches the key and returns it and returns item: {key} not found!
+        It searches for the first node containing a data that matches the key and returns it, if item is not found it returns item: {key} not found!
 
         It takes O(n) time
         """
