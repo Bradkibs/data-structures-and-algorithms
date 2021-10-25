@@ -76,12 +76,15 @@ class linked_list:
         if position == 0:
             self.add(val)   
         elif position > 0:
-           
+            curr = self.head
             while position > 1:
-                value = value.next_node
+                curr = curr.next_node
                 position -= 1
-            prev = value
-            next= value.next_node
+            prev = curr
+            next= curr.next_node
+            new.next_node= next
+            prev.next_node = new
+            
 
 
     def __repr__(self) -> list:
