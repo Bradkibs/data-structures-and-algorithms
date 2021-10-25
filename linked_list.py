@@ -70,6 +70,9 @@ class linked_list:
         It takes constant time O(1) to insert the item but the traversal through the the list to find the location of the insertion takes linear time O(n)
         
         """
+        size_of_list = self.size()
+        if pos > size_of_list:
+            return f"Invalid insertion position! please insert it in a position less than {size_of_list}"
         new = node(val)
         value= new 
         position = pos
@@ -84,8 +87,20 @@ class linked_list:
             next= curr.next_node
             new.next_node= next
             prev.next_node = new
-            
+        elif position < 0:
+            """
+            When an input is less than zero it should count from the last item of the linked list.
+            Takes O(n) time to find the size of the linked list but O(1) time to insert the item
 
+            """    
+            if size_of_list == 0:
+                return f"Error! this list has a size of {size_of_list} nodes please add some data first"
+            position = size_of_list + pos + 1
+
+            if position < 0:
+                return f"Error! the item's position is out of range"
+            else:
+                return self.insert(val,position)
 
     def __repr__(self) -> list:
         """
