@@ -62,7 +62,7 @@ class linked_list:
                 return curr
             else:
                 curr = curr.next_node
-            return f"item: {key} not found!"
+        return f"item: {key} not found!"
 
     def insert(self,val,pos):
         """
@@ -71,6 +71,8 @@ class linked_list:
         
         """
         size_of_list = self.size()
+        if size_of_list == 0:
+            self.add(val)
         if pos > size_of_list:
             return f"Invalid insertion position! please insert it in a position less than {size_of_list}"
         new = node(val)
@@ -101,6 +103,28 @@ class linked_list:
                 return f"Error! the item's position is out of range"
             else:
                 return self.insert(val,position)
+    def remove(self, key):
+        """
+        It  searches first if the item is really in the linked list then removes it from its position
+        It takes O(n) time to search for the item in the list and O(1) to remove it
+        """
+        curr = self.head
+        prev = None
+        found= False
+        while curr and not found:
+            if curr.data == key and curr is self.head:
+                
+                self.head = curr.next_node
+                found = True
+                
+            elif curr.data == key:
+                prev.next_node = curr.next_node
+                found = True
+            else:
+                prev = curr
+                curr = curr.next_node
+        return curr
+        
 
     def __repr__(self) -> list:
         """
